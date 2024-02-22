@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BM - Dealer Motor Bekas Terpercaya</title>
+    <link rel="icon" href="./images/favicon.png">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- fontawesome -->
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+
+
+</head>
+<body class="light-mode">
+    <!-- signin popup -->
+    <div id="signinPopup">
+        <div id="signinPopupContainer">
+            <div class="closeSigninPopupDiv">
+                <span id="closeSigninPopup">&times;</span>
+            </div>
+            <div class="headingDiv">
+                <span class="heading">Log in</span>
+                <br>
+                <span>Jual &amp; jual beli motor gampang dengan BM.</span>
+            </div>
+            <div id="signinWarning"></div>
+            <form id="signinForm">
+                <input type="email" placeholder="Email.." id="signinEmail" required>
+                <input type="password" placeholder="Passowrd.." id="signinPw" required>
+                <input type="submit" value="Sign in"> 
+            </form>
+            <p>Belum punya akun? <a href="#" id="signupBtn">Sign up</a></p>
+        </div>
+    </div>
+    <!-- /signin popup -->
+
+    <!-- signup popup -->
+    <div id="signupPopup">
+        <div id="signupPopupContainer">
+            <div class="closeSignupPopupDiv">
+                <span id="closeSignupPopup">&times;</span>
+            </div>
+            <div class="headingDiv">
+                <span class="heading">Sign up</span>
+                <br>
+                <span>Jual &amp; jual beli motor gampang dengan BM.</span>
+            </div>
+            <div id="signupWarning"></div>
+            <form id="signupForm">
+                <input type="text" placeholder="Name.." id="IMKD" required>
+                <input type="email" placeholder="Email.." id="IMKD@gmail.com" required>
+                <input type="password" placeholder="Passowrd.." id="672022150" required>
+                <input type="submit" value="Sign up"> 
+            </form>
+            <p>Sudah punya akun? <a href="index.html" id="signinBtn_2">Log in</a></p>
+        </div>
+    </div>
+    <!-- /signup popup -->
+
+    <!-- category popup -->
+    <div id="categoryPopup">
+        <div id="categoryPopupContainer">
+            <div class="closeCategoryPopupDiv">
+                <span id="closeCategoryPopup">&times;</span>
+            </div>
+            <div class="headingDiv">
+                <span class="heading">Pilih Merk</span>
+            </div>
+            <div id="warning">Pilih kategori</div>
+            <form id="categoryForm">
+                <label class="radioContainer">Ducati
+                    <input type="radio" name="category" value="Ducati">
+                    <span class="radioCheck"></span>
+                </label>
+                <label class="radioContainer">Kawasaki
+                    <input type="radio" name="category" value="Kawasaki">
+                    <span class="radioCheck"></span>
+                </label>
+                <label class="radioContainer">Honda
+                    <input type="radio" name="category" value="Honda">
+                    <span class="radioCheck"></span>
+                </label>
+                <label class="radioContainer">KTM
+                    <input type="radio" name="category" value="KTM">
+                    <span class="radioCheck"></span>
+                </label>
+                <label class="radioContainer">Suzuki
+                    <input type="radio" name="category" value="Suzuki">
+                    <span class="radioCheck"></span>
+                </label>
+                <label class="radioContainer">Yamaha
+                    <input type="radio" name="category" value="Yamaha">
+                    <span class="radioCheck"></span>
+                </label>
+                <input type="submit" value="next">
+            </form>
+        </div>
+    </div>
+    <!-- /category popup -->
+
+    <!-- sell popup -->
+    <div id="sellPopup">
+        <div id="sellPopupContainer">
+            <div class="closeSellPopupDiv">
+                <span id="backCategoryPopup"><i class="fas fa-arrow-left"></i></span>
+                <span id="closeSellPopup">&times;</span>
+            </div>
+            <div class="headingDiv">
+                <span class="heading">POSTING IKLAN ANDA</span>
+            </div>
+            <form id="sellForm">
+                <p id="categoryName"></p>
+                <input type="text" placeholder="Judul..." id="adTitle" required>
+                <input type="text" placeholder="Deskripsi..." id="adDescription" required>
+                <input type="number" placeholder="Harga..." id="adPrice" required>
+                <input type="number" placeholder="Nomor Telepon.." id="adPhone">
+                <input type="file" id="adImage" multiple>
+                <input type="submit" value="Tambah"></a>
+            </form>
+        </div>
+    </div>
+    <!-- /sell popup -->
+
+    <!-- ad details popup -->
+    <div id="adDetailsPopup">
+        <div id="adDetailsPopupContainer">
+            <div class="closeAdDetailsPopupDiv">
+                <span id="closeAdDetailsPopup">&times;</span>
+            </div>
+            <div class="left">
+                <div class="inLeft" id="AdDescAndImage">
+                    <h2 id="showAdDescriptionHeading"></h2>
+                    <div id="showAdImage"></div>
+                    <div class="showAdDescription">
+                        <p id="showAdDescriptionDesc"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="inRight">
+                    <div id="price"></div>
+                    <div class="sellerInfo">
+                        <h2>Seller Info</h2>
+                        <div id="sellerName"></div>
+                        <div id="sellerPhone"></div>
+                        <div class="chatWithSeller">
+                            <button id="chatWithSellerBtn">Chat with seller</button>
+                        </div>
+                    </div>
+                    <div id="deleteAdBtn">Delete Ad</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /ad details popup -->
+
+    <div id="main">
+        <!-- header -->
+        <header>
+            <div class="top">
+                <div class="container">
+                    <div class="left">
+                        <div class="mainLogo">
+                            <a href="./index.html">
+                                <img src="./images/logo.png" alt="logo">
+                            </a>
+                        </div>
+                        <div class="location">
+                            <!-- <i class="fas fa-globe-europe"></i> -->
+                            <input type="text" placeholder="Location..">
+                        </div>
+                        <div class="search">
+                            <div class="searchFieldDiv">
+                                <input type="text" placeholder="Cari..." id="searchField">
+                            </div>
+                            <div class="searchBtnDiv">
+                                <button id="searchBtn"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="signinBtnDiv">
+                            <div class="dropdown">
+                                <button id="signinBtn" class="showSignoutBtnHover">Log in</button>
+                                <div class="dropdownContent" id="dropdownContent">
+                                    <a href="javascript:void(0)" id="myAds">My Ads</a>
+                                    <a href="javascript:void(0)" id="favorites">Favorites</a>
+                                    <a href="index.html" id="signoutBtn">Sign out</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sellBtnDiv">
+                            <button id="sellBtn">JUAL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="container">
+                    <div class="dropdown">
+                        <a href="javascript:void(0)" id="browseCategories">CARI BERDASARKAN MEREK &nbsp; <i
+                                class="fas fa-angle-down"></i></a>
+                        <div class="dropdownContent">
+                            <a href="Javascript:void(0)" onclick="filter('Semua')">Semua Kategori</a>
+                            <a href="Javascript:void(0)" onclick="filter('Ducati')">Ducati</a>
+                            <a href="Javascript:void(0)" onclick="filter('Kawasaki')">Kawasaki</a>
+                            <a href="Javascript:void(0)" onclick="filter('Honda')">Honda</a>
+                            <a href="Javascript:void(0)" onclick="filter('KTM')">KTM</a>
+                            <a href="Javascript:void(0)" onclick="filter('Suzuki')">Suzuki</a>
+                            <a href="Javascript:void(0)" onclick="filter('Yamaha')">Yamaha</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- /header -->
+
+        <!-- banner -->
+        <div class="carousel-container">
+            <button class="prev" onclick="prevSlide()">Previous</button>
+            <div class="carousel-slide">
+              <img src="C:\Users\Luchi Sulistyowati\Downloads\TR IMK\images\WhatsApp Image 2024-02-21 at 20.01.25_f991bce9.jpg" alt="Image 1">
+            </div>
+            <div class="carousel-slide">
+              <img src="C:\Users\Luchi Sulistyowati\Downloads\TR IMK\images\WhatsApp Image 2024-02-21 at 20.01.25_d7f9cf4e.jpg" alt="Image 2">
+            </div>
+            <div class="carousel-slide">
+              <img src="C:\Users\Luchi Sulistyowati\Downloads\TR IMK\images\WhatsApp Image 2024-02-21 at 20.01.25_39aa455d.jpg" alt="Image 3">
+            </div>
+            <button class="next" onclick="nextSlide()">Next</button>
+          </div>
+        <!-- /banner -->
+
+        <!-- popular categories -->
+        <div class="popularCategories" id="popularCategories">
+            <div class="container">
+                <div class="heading">
+                    <h2>Merk Populer</h2>
+                    <hr>
+                    <p>Cari motor favorit anda</p>
+                </div>
+                <div class="categories">
+                    <div class="oneThird">
+                        <div class="top">
+                            <a href="content.html" onclick="filter('Mobiles')"></i>
+                                &nbsp; DUCATI</a>
+                        </div>
+                    </div>
+                    <div class="oneThird">
+                        <div class="top">
+                            <a href="404.html" onclick="filter('Vehicles')"></i> &nbsp;
+                                KAWASAKI</a>
+                        </div>
+                        <div class="bottom">
+                            <a href="javascript:void(0)">Mitsubishi</a>
+                            <a href="javascript:void(0)">Ninja</a>
+                            <a href="javascript:void(0)">Vespa</a>
+                        </div>
+                    </div>
+                    <div class="oneThird">
+                        <div class="top">
+                            <a href="404.html" onclick="filter('Electronics')"></i>
+                                &nbsp; HONDA</a>
+                        </div>
+                    </div>
+                    <div class="oneThird">
+                        <div class="top">
+                            <a href="404.html" onclick="filter('Bikes')">&nbsp;
+                                KTM</a>
+                        </div>
+                    </div>
+                    <div class="oneThird">
+                        <div class="top">
+                            <a href="404.html" onclick="filter('Services')">
+                                &nbsp; YAMAHA</a>
+                        </div>
+                    </div>
+                    <div class="oneThird">
+                        <div class="top">
+                            <a href="404.html" onclick="filter('Furniture')"> &nbsp;
+                                SUZUKI</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /popular categories -->
+
+        <!-- top picks for you -->
+        <div class="topPicks">
+            <div class="container" id="topPicksContainer">
+                <div class="heading">
+                    <h2 id="categoryHeading">Baru Ditambahkan</h2>
+                    <hr>
+                </div>
+                <div class="picks" id="picks">
+
+                </div>
+            </div>
+        </div>
+        <!-- /top picks for you -->
+        <button id="mode-toggle">Change Mode</button>
+        <script>
+            const modeToggleBtn = document.getElementById("mode-toggle");
+            const body = document.body;
+    
+            modeToggleBtn.addEventListener("click", () => {
+                body.classList.toggle("dark-mode");
+            });
+        </script>
+        <!-- footer -->
+        <footer>
+            <style>
+                /* Dark mode styles */
+                .dark-mode {
+                    background-color: rgb(0, 0, 0);
+                    color: #fff;
+                }
+            </style>
+            <div class="top">
+                <div class="container">
+                    <div class="oneFifth">
+                        <h3>KATEGORI POPULER</h3>
+                        <a href="javascript:void(0)">Mitsubishi</a> <br>
+                        <a href="javascript:void(0)">Ninja</a> <br>
+                        <a href="javascript:void(0)">Vespa</a> <br>
+                        <a href="javascript:void(0)">Wuling</a> <br>
+                        
+                    </div>
+                    <div class="oneFifth">
+                        <h3>PENCARIAN TERATAS</h3>
+                        <a href="#">Beat</a><br>
+                        <a href="#">Vario</a><br>
+                        <a href="#">N-Max</a><br>
+                        <a href="#">Vespa Primavera</a>
+                    </div>
+                    <div class="oneFifth">
+                        <h3>About us</h3>
+                        <a href="#">About BM</a><br>
+                        <a href="#">BM Blog</a><br>
+                        <a href="#">Contact us </a><br>
+                    </div>
+                    <div class="oneFifth">
+                        <h3>BM</h3>
+                        <a href="#">Help</a><br>
+                        <a href="#">Sitemap</a><br>
+                    </div>
+                    <div class="oneFifth footerSocial">
+                        <h3>Find us here</h3>
+                        <a href="https://chat.openai.com/"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://chat.openai.com/"><i class="fab fa-youtube"></i></a>
+                        <a href="https://chat.openai.com/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="container">
+                    <div class="left">
+                        <span class="countries">
+                            Ubah negara:
+                            <a href="#">Malaysia</a>
+                            <a href="#">India</a>
+                            <a href="#">Kenya</a>
+                            <a href="#">Ghana</a>
+                        </span>
+                    </div>
+                    <div class="right">
+                        <span class="copyrights">
+                            Copyrights &copy; BM, 2024.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- /footer -->
+    </div>
+
+
+    <!-- service worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(res => {
+                    console.log('SW registered');
+                }).catch(err => {
+                    console.log('Error in SW registration', err);
+                })
+        } else {
+            console.log('Browser does not support SW');
+        }
+    </script>
+    <!-- js -->
+    <script src="js/app.js"></script>
+
+    
+
+    
+</body>
+
+</html>

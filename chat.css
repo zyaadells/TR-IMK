@@ -1,0 +1,152 @@
+/*for title*/
+*{
+  font-family: 'Poppins', sans-serif;
+}
+.title {
+  background-color: #EAECEE ;
+  color: inherit;
+  padding: 1em 1em;
+  border-bottom: 3px solid #E7EAEC;
+
+
+}
+
+.chatpanel-head {
+ 
+  background-color: #2C3E50;
+  border-bottom: 1px solid #FFFFFF;
+  color: #FDFEFE;
+  margin: 0;
+  padding: 1em 1.5em ;
+  min-height: 48px;
+}
+
+.dark-mode chatpanel-head {
+ 
+  background-color: #2C3E50;
+  border-bottom: 1px solid #FFFFFF;
+  color: #2C3E50;
+  margin: 0;
+  padding: 1em 1.5em ;
+  min-height: 48px;
+}
+
+.chatpanel {
+  padding: 0;
+    background-color: #EAECEE ;
+
+}
+
+.dark-mode chatpanel {
+  padding: 0;
+    background-color: #000000 ;
+
+}
+
+.message-box {
+  padding:  1em 2em;
+}
+.user-pic {
+  margin-top: 0.6em;
+}
+.discussion-panel {
+  background: #F8F9F9;
+  padding: 0.8em;
+  height: 400px;
+  overflow-y: auto;
+}
+
+.dark-mode discussion-panel {
+  background: #4a4e4e;
+  padding: 0.8em;
+  height: 400px;
+  overflow-y: auto;
+}
+
+.message {
+  background-color: #EBF5FB;
+  text-align: left;
+  display: block;
+  padding: 1em 4em;
+  position: relative;
+  border-radius: 4px;
+}
+.dark-mode message {
+  background-color: #4a4e4e;
+  text-align: left;
+  display: block;
+  padding: 1em 4em;
+  position: relative;
+  border-radius: 4px;
+}
+
+.discussion-panel .message-box.left .user-pic {
+  float: left;
+  margin-right: 1em;
+}
+.discussion-panel .message-box.right .user-pic {
+  float: right;
+  margin-left: 1em;
+}
+
+.discussion-panel .message-box .left .message-date {
+  float: right;
+}
+.discussion-panel .message-box .right .message-date {
+  float: left;
+}
+.discussion-panel .message-box .left .message {
+  text-align: left;
+  margin-left: 55px;
+}
+.discussion-panel .message-box .right .message {
+  text-align: right;
+  margin-right: 55px;
+}
+.message-date {
+  font-size: 0.8em;
+  color: #  color: #888888;
+}
+.dark-mode message-date {
+  font-size: 0.8em;
+  color: #ffffff;
+}
+
+.message-content {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+font-size: 1.3em;
+}
+
+
+
+/* for Chat name list*/
+
+.side-panel {
+  overflow-y: auto; /*for scrolling*/
+  height: 400px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.user-dp {
+  float: left;
+  margin-right: 1em;
+}
+
+.user-name {
+  padding: 0.5em;
+font-family: 'Poppins', sans serif;
+font-size: 1.3em;
+}
+
+.user-block {
+  padding: 0.6em 1em;
+  border-bottom: 1px solid #76AAD5;
+}
+
+.user-block a {
+  color: black;
+}
+
+
+
